@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.6.0 - 2026-09-14
+#### Features
+- add connect client - (52a7693) - Nathan Blair
+#### Documentation
+- consolidate documentation - (7974f48) - Nathan Blair
+
+- - -
+
 ## 0.5.0 - 2026-09-12
 #### Features
 - hosted as a different module name now - (c43ec40) - Nathan Blair
