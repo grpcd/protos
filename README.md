@@ -1,8 +1,9 @@
 # grpcd protocol
 
 The contract between a grpcd server and the services and clients that talk to
-it. Three RPCs, defined in `protos/grpcd/`, and the rules an implementation of
-either side honors.
+it: three RPCs, defined in `protos/grpcd/`, and the rules an implementation of
+either side honors. Beside them, the admission contract a grpcd gateway
+consults services with, defined in `protos/admission/`.
 
 ## Installation
 
@@ -10,7 +11,9 @@ either side honors.
 go get github.com/grpcd/protos
 ```
 
-The generated Go lives at the module root, package `grpcd`.
+The generated Go lives at the module root, package `grpcd`, with the Connect
+handlers and clients in `grpcdconnect` and the admission messages in
+`admission`.
 
 ## Method Names
 
@@ -127,3 +130,25 @@ fault while the service is healthy. The server treats the open `Register`
 stream as proof the service is up and writes the row back. A client with a
 persistent local fault drives a remove-and-restore cycle rather than losing the
 row for everyone.
+
+## Admission
+
+A gateway routing through grpcd consults admission services before forwarding
+a request. The contract is two messages, `AdmissionRequest` and
+`AdmissionResponse`, with no shared service: each admission service declares
+its own unary RPC taking the one and returning the other, and the gateway is
+configured with that RPC's procedure name. Method discovery keys on the
+procedure, so two admission services never share one.
+
+`AdmissionRequest` carries the target procedure, every header as received, and
+the peer (remote address and, over TLS, the client certificate). The body is
+never sent. `AdmissionResponse` names headers to remove and headers to set on
+the forwarded request, `remove` applied before `set`, and may name a different
+procedure to forward to. A refusal is the error the RPC returns, which the
+gateway answers to the client without forwarding.
+
+```proto
+service Authenticator {
+  rpc Authenticate(admission.AdmissionRequest) returns (admission.AdmissionResponse);
+}
+```
