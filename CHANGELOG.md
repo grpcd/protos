@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.7.0 - 2026-09-15
+#### Features
+- add admission messages - (8c22dd6) - Nathan Blair
+
+- - -
+
 ## 0.6.0 - 2026-09-14
 #### Features
 - add connect client - (52a7693) - Nathan Blair
