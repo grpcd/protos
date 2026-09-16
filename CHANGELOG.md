@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.9.1 - 2026-09-16
+#### Bug Fixes
+- completely remove grpc-go from protos - (a7f276f) - Nathan Blair
+
+- - -
+
 ## 0.9.0 - 2026-09-16
 #### Features
 - drop grpc-go bindings - (829123e) - Nathan Blair
