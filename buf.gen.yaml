@@ -6,11 +6,6 @@ plugins:
     opt:
       - module=github.com/grpcd/protos
 
-  - remote: buf.build/grpc/go
-    out: go
-    opt:
-      - module=github.com/grpcd/protos
-
   # - remote: buf.build/connectrpc/go:v2.0.0
   - local: protoc-gen-connect-go
     out: go
