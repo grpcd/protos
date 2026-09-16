@@ -87,7 +87,10 @@ address from the method and answers with the next.
 
 When the set is empty the server holds the stream and answers with the next
 address registered for the method as it arrives. The client blocks on its
-receive rather than asking again.
+receive rather than asking again. A first message with `no_wait` set asks for
+`NOT_FOUND` instead of the hold: a client resolving a single request, a
+gateway forwarding one, has nothing to wait for, while a client that will hold
+the address waits.
 
 A client holds the address it took until the transport to it drops. It then
 opens a new `Discover`, reports the address dead, and takes the next candidate.

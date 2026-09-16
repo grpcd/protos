@@ -15,6 +15,12 @@ message DiscoverRequest {
     // removes it and answers with another.
     string dead_address = 2;
   }
+
+  // On the first message: answer NOT_FOUND at once when nothing serves the
+  // method, rather than holding the stream until something registers. A
+  // client resolving one request sets it; a client that will hold the
+  // address waits.
+  bool no_wait = 3;
 }
 
 message DiscoverResponse {
