@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.8.0 - 2026-09-16
+#### Features
+- support skip waiting option for discovers - (6074604) - Nathan Blair
+
+- - -
+
 ## 0.7.0 - 2026-09-15
 #### Features
 - add admission messages - (8c22dd6) - Nathan Blair
